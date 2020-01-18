@@ -110,7 +110,8 @@
 import LotteryConfig from '@/components/LotteryConfig';
 import Publicity from '@/components/Publicity';
 import Tool from '@/components/Tool';
-import bgaudio from '@/assets/bg.mp3';
+import bgaudio from '@/assets/bg2.mp3';
+import zhongjiangaudio from '@/assets/zhongjiang.mp3';
 import beginaudio from '@/assets/begin.mp3';
 import {
   getData,
@@ -302,9 +303,6 @@ export default {
         noSelect: true,
         lock: 'xy'
       });
-      const AppCanvas = this.$el.querySelector('#rootcanvas');
-      AppCanvas.style.background = `url(${require('@/assets/test.gif')}) no-repeat`;
-      AppCanvas.style['background-size'] = '100% 100%';
     },
     reloadTagCanvas() {
       window.TagCanvas.Reload('rootcanvas');
@@ -315,8 +313,12 @@ export default {
     toggle(form) {
       const { speed, config } = this;
       if (this.running) {
-        this.audioSrc = bgaudio;
+        this.audioSrc = zhongjiangaudio;
         this.loadAudio();
+        setTimeout(() => {
+          this.audioSrc = bgaudio;
+          this.loadAudio();
+        }, 5 * 1000);
 
         window.TagCanvas.SetSpeed('rootcanvas', speed());
         this.showRes = true;
@@ -370,7 +372,7 @@ export default {
 #root {
   height: 100%;
   position: relative;
-  background-image: url('./../assets/bg1.jpg');
+  background-image: url('./../assets/test.gif');
   background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;
