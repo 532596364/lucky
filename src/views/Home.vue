@@ -1,7 +1,7 @@
 <template>
   <div id="root">
     <header>
-      <Publicity v-show="!running" />
+      <Publicity v-show="false" />
       <el-button class="res" type="text" @click="showResult = true">
         抽奖结果
       </el-button>
@@ -92,11 +92,6 @@
       :closeRes="closeRes"
     />
     <Result :visible.sync="showResult"></Result>
-
-    <span class="copy-right">
-      Copyright©zhangyongfeng5350@gmail.com
-    </span>
-
     <audio
       id="audiobg"
       preload="auto"
@@ -307,6 +302,9 @@ export default {
         noSelect: true,
         lock: 'xy'
       });
+      const AppCanvas = this.$el.querySelector('#rootcanvas');
+      AppCanvas.style.background = `url(${require('@/assets/test.gif')}) no-repeat`;
+      AppCanvas.style['background-size'] = '100% 100%';
     },
     reloadTagCanvas() {
       window.TagCanvas.Reload('rootcanvas');
@@ -384,7 +382,10 @@ export default {
   header {
     height: 50px;
     line-height: 50px;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     .el-button {
       position: absolute;
       top: 17px;

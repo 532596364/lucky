@@ -1991,7 +1991,7 @@
 							var aJ = ab(i.canvas.id);
 							aH.display = "block";
 							aH.left = aJ.x + i.mx + "px";
-							aH.top = aJ.y + i.my + 24 + "px";
+							aH.top = aJ.y + i.my + 214 + "px";
 							i.tttimer = null
 					}, i.tooltipDelay)
 			}
